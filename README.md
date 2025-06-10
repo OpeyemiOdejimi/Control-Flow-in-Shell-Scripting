@@ -1,4 +1,4 @@
-# Control-Flow-in-Shell-Scripting
+# Control Flow and Error Handling in Shell Scripting
 
 Control flow statements are the backbone of decision making in programming. In scripting, these statements lets your scripts decide what to do or how to proceed based on conditions, loops or user inputs.
 
@@ -70,3 +70,12 @@ In this task, the focus will be on For Loops
 
    ![Execute the second script](Images/run-loop2.png)
    _**Fig.6**_: Execute the second type of For Loop
+
+## Error Handling in Shell Scripting
+
+Error handling is a crucial aspect of shell scripting that involves anticipating and managing errors that may occur during script execution. Some of these errors may arise due to problems with User inputs validation, unexpected system behaviour, or resource unavailability. When implementing error handling in shell scripting, it's essential to consider different scenarious and develop strategies to handle them accordingly. 
+
+Some of these strategies innclude;
+* Identifying Potential Errors
+* Using Conditional Statements
+* Providing Informative Messages
