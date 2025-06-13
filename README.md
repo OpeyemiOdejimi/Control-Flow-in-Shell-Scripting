@@ -107,3 +107,57 @@ create_s3_buckets() {"\n    company=\"datawise\"\n    departments=(\"Marketing\"
 ```
 
 The _**aws s3api head-bucket**_ command was used to check if the bucket already exists. If it does exist, a message is displayed indicating its presence. otherwise, the script proceeds to create the bucket as before. This prevent errors and ensure existing buckets are not created repeatedly.
+
+## Working with Functions and Arrays
+
+**Function: Check if script has an argument**
+
+Here is a code without a function
+```
+#!/bin/bash
+
+# Checking the number of arguments
+if [ "$#" -ne 0 ]; then
+    echo "Usage: $0 <environment>"
+    exit 1
+fi
+
+# Accessing the first argument
+ENVIRONMENT=$1
+
+# Acting based on the argument value
+if [ "$ENVIRONMENT" == "local" ]; then
+  echo "Running script for Local Environment..."
+elif [ "$ENVIRONMENT" == "testing" ]; then
+  echo "Running script for Testing Environment..."
+elif [ "$ENVIRONMENT" == "production" ]; then
+  echo "Running script for Production Environment..."
+else
+  echo "Invalid environment specified. Please use 'local', 'testing', or 'production'."
+  exit 2
+fi
+
+```
+It would look like this with a function called _**check_num_of_args**_
+
+```
+#!/bin/bash
+
+check_num_of_args() {"\n# Checking the number of arguments\nif [ \"$#\" -ne 0 ]; then\n    echo \"Usage: $0 <environment>\"\n    exit 1\nfi\n"}
+
+# Accessing the first argument
+ENVIRONMENT=$1
+
+# Acting based on the argument value
+if [ "$ENVIRONMENT" == "local" ]; then
+  echo "Running script for Local Environment..."
+elif [ "$ENVIRONMENT" == "testing" ]; then
+  echo "Running script for Testing Environment..."
+elif [ "$ENVIRONMENT" == "production" ]; then
+  echo "Running script for Production Environment..."
+else
+  echo "Invalid environment specified. Please use 'local', 'testing', or 'production'."
+  exit 2
+fi
+
+```
