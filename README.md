@@ -161,3 +161,56 @@ else
 fi
 
 ```
+
+# Capstone Project - Linux Shell Scripting
+
+## Bash Script for Generating a Multiplication Table
+
+```
+#!/bin/bash
+
+# Function to check if input is a valid number
+is_number() {
+  [[ "$1" =~ ^[0-9]+$ ]]
+}
+
+# Prompt for the number to generate the multiplication table for
+read -p "Enter a number to generate its multiplication table: " number
+
+# Validate number input
+if ! is_number "$number"; then
+  echo "Invalid input. Please enter a valid positive number."
+  exit 1
+fi
+
+# Ask user for table range preference
+read -p "Do you want a full table (1 to 10) or a partial table? (Enter 'full' or 'partial'): " choice
+
+if [[ "$choice" == "full" ]]; then
+  start=1
+  end=10
+elif [[ "$choice" == "partial" ]]; then
+  read -p "Enter the start of the range: " start
+  read -p "Enter the end of the range: " end
+
+  # Validate the start and end inputs
+  if ! is_number "$start" || ! is_number "$end" || [[ "$start" -gt "$end" ]]; then
+    echo "Invalid range. Defaulting to full table (1 to 10)."
+    start=1
+    end=10
+  fi
+else
+  echo "Invalid choice. Defaulting to full table (1 to 10)."
+  start=1
+  end=10
+fi
+
+# Display the multiplication table
+echo
+echo "Multiplication Table for $number (from $start to $end):"
+for (( i=$start; i<=$end; i++ ))
+do
+  echo "$number x $i = $(( number * i ))"
+done
+
+```
